@@ -1,0 +1,17 @@
+import random
+
+def nombre_aleatoire(minimum, maximum):
+    # Génère un nombre aléatoire entre minimum et maximum
+    nombre = random.randint(minimum, maximum)
+    return nombre
+
+# Demande à l'utilisateur de spécifier la plage
+min_val = int(input("Entrez la valeur minimale : "))
+max_val = int(input("Entrez la valeur maximale : "))
+
+# Vérifie si la plage est valide
+if min_val >= max_val:
+    print("La valeur minimale doit être inférieure à la valeur maximale.")
+else:
+    # Affiche le nombre aléatoire dans la plage spécifiée
+    print("Voici un nombre aléatoire entre", min_val, "et", max_val, ":", nombre_aleatoire(min_val, max_val))
