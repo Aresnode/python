@@ -37,7 +37,7 @@ def on_press(key):
             mousee.position = (2203, 241)       #1.1 pour achat
             time.sleep( random.uniform( 0.5,0.7 ))
             mousee.click(Button.left)
-            time.sleep( random.uniform( 1,1.5 ))
+            time.sleep( random.uniform( 1,1.3 ))
 
             mousee.position = (2488, 371)       #1.2 %
             time.sleep( random.uniform( 0.5,0.7 ))
@@ -47,7 +47,7 @@ def on_press(key):
             time.sleep( random.uniform( 0.5,0.8 ))
             
             mousee.position = (2451, 323)       #1.3 copi
-            time.sleep( random.uniform( 0.5,0.7 ))
+            time.sleep( random.uniform( 0.5,1 ))
             mousee.click(Button.left)
             time.sleep(0.1)
             with keyboarde.pressed(Key.ctrl):   #control c 
