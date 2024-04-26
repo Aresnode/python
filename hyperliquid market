@@ -1,0 +1,89 @@
+import os
+import pyperclip as pc
+import time
+import random
+import pynput
+from pynput import keyboard
+from pynput.keyboard import Controller, Key
+from pynput.mouse import Button , Controller
+
+keyboarde = pynput.keyboard.Controller()
+mousee = pynput.mouse.Controller()
+
+#keyboard.press("")  #écrire une lettre
+
+#mousee.click(Button.left)   #faire un clic gauche
+
+#time.sleep(0.4) #attendre
+
+#with keyboarde.pressed(Key.ctrl):   #control v
+        #keyboarde.press('v')
+        #keyboarde.release('V')
+
+#mousee.position = (501, 532)    #déplace la sourie a la position x,y
+
+basehl = int(input("enter le nombre de purr que tu as") )
+
+xhl = int( input("enter le nombre de purr que vous voulez garder a la fin") )  #une demande
+
+print("vous allez garder", xhl)
+
+def on_press(key):
+    if key == keyboard.Key.f8:
+        time.sleep(10)
+        global basehl
+        while (basehl > xhl):
+            time.sleep( random.uniform( 2,3 ))
+            mousee.position = (2203, 241)       #1.1 pour achat
+            time.sleep( random.uniform( 0.5,0.7 ))
+            mousee.click(Button.left)
+            time.sleep( random.uniform( 1,1.5 ))
+
+            mousee.position = (2488, 371)       #1.2 %
+            time.sleep( random.uniform( 0.5,0.7 ))
+            keyboarde.press( "5" )
+            #time.sleep(0.1)
+            #keyboarde.press( "9" )
+            time.sleep( random.uniform( 0.5,0.8 ))
+            
+            mousee.position = (2451, 323)       #1.3 copi
+            time.sleep( random.uniform( 0.5,0.7 ))
+            mousee.click(Button.left)
+            time.sleep(0.1)
+            with keyboarde.pressed(Key.ctrl):   #control c 
+                keyboarde.press('c')
+                keyboarde.release('c')
+            basehl = pc.paste()                 #enregistre control c
+            time.sleep( random.uniform( 0.5,0.8 ))
+
+            mousee.position = (2318, 760)       #1.4 ordre achat
+            time.sleep( random.uniform( 0.5,0.7 ))
+            mousee.click(Button.left)
+            time.sleep( random.uniform( 2,3 ))
+            
+            mousee.position = (2318, 760)       #2.1 pour vendre
+            time.sleep( random.uniform( 0.5,0.7 ))
+            mousee.click(Button.left)
+            time.sleep( random.uniform( 0.5,0.8 ))
+
+            mousee.position = (2488, 371)       #2.2 %
+            time.sleep( random.uniform( 0.5,0.7 ))
+            mousee.click(Button.left)
+            time.sleep(0.1)
+            keyboarde.press( "9" )
+            #time.sleep(0.1)
+            #keyboarde.press( "9" )
+            time.sleep( random.uniform( 0.5,0.8 ))
+
+            mousee.position = (2318, 760)       #2.4 ordre vente
+            time.sleep( random.uniform( 0.5,0.7 ))
+            mousee.click(Button.left)
+            return 0
+
+listener = keyboard.Listener(on_press=on_press) # Créer un écouteur de clavier
+
+listener.start() # Démarrer l'écouteur
+
+input('Appuyez sur Entrée pour arrêter le programme.\n')    # Garder le programme en cours d'exécution
+
+listener.stop() # Arrêter l'écouteur
