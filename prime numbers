@@ -1,0 +1,20 @@
+def generer_nombres_premiers(n):
+    nombres_premiers = []
+    for num in range(2, n + 1):
+        est_premier = True
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                est_premier = False
+                break
+        if est_premier:
+            nombres_premiers.append(num)
+    return nombres_premiers
+
+# Demander à l'utilisateur d'entrer un nombre
+limite_superieure = int(input("Entrez un nombre entier pour trouver les nombres premiers jusqu'à ce nombre : "))
+
+# Appeler la fonction pour générer les nombres premiers
+nombres_premiers = generer_nombres_premiers(limite_superieure)
+
+# Afficher les nombres premiers générés
+print("Nombres premiers jusqu'à", limite_superieure, ":", nombres_premiers)
